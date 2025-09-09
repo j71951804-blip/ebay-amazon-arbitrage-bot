@@ -1,8 +1,8 @@
 {
   "ebay": {
-    "app_id": "YOUR_EBAY_APP_ID",
-    "cert_id": "YOUR_EBAY_CERT_ID",
-    "dev_id": "YOUR_EBAY_DEV_ID",
+    "app_id": "JoshuaRo-Arbitage-SBX-6147ddcaf-bad96762",
+    "cert_id": "SBX-147ddcaf71c2-4321-4ce4-8c75-e6eb",
+    "dev_id": "8eb829b1-c1ee-4f69-98c5-f01b8ea6ea6f",
     "marketplace_id": "EBAY_GB",
     "api_endpoint": "https://api.ebay.com"
   },
