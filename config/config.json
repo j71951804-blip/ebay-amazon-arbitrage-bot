@@ -1,10 +1,10 @@
 {
   "ebay": {
-    "app_id": "JoshuaRo-Arbitage-SBX-6147ddcaf-bad96762",
-    "cert_id": "SBX-147ddcaf71c2-4321-4ce4-8c75-e6eb",
+    "app_id": "JoshuaRo-Arbitage-PRD-d1152862f-d6cc7739",
+    "cert_id": "PRD-1152862fb396-ee39-43f5-b7d3-25e4",
     "dev_id": "8eb829b1-c1ee-4f69-98c5-f01b8ea6ea6f",
     "marketplace_id": "EBAY_GB",
-    "api_endpoint": "https://api.sandbox.ebay.com"
+    "api_endpoint": "https://api.ebay.com"
   },
   "amazon": {
     "access_key": "YOUR_AWS_ACCESS_KEY",
