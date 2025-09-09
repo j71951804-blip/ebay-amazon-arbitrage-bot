@@ -1,0 +1,26 @@
+{
+  "ebay": {
+    "app_id": "JoshuaRo-Arbitage-SBX-6147ddcaf-bad96762",
+    "cert_id": "SBX-147ddcaf71c2-4321-4ce4-8c75-e6eb",
+    "dev_id": "8eb829b1-c1ee-4f69-98c5-f01b8ea6ea6f",
+    "marketplace_id": "EBAY_GB",
+    "api_endpoint": "https://api.ebay.com"
+  },
+  "amazon": {
+    "access_key": "YOUR_AWS_ACCESS_KEY",
+    "secret_key": "YOUR_AWS_SECRET_KEY",
+    "marketplace_id": "A1F83G8C2ARO7P",
+    "region": "eu-west-2"
+  },
+  "profit_thresholds": {
+    "min_profit_gbp": 10,
+    "min_roi_percentage": 25,
+    "alert_profit_gbp": 25
+  },
+  "notifications": {
+    "telegram_bot_token": "YOUR_TELEGRAM_BOT_TOKEN",
+    "telegram_chat_id": "YOUR_CHAT_ID",
+    "email_from": "your_email@gmail.com",
+    "email_to": "alerts@yourdomain.com"
+  }
+}
