@@ -51,12 +51,14 @@ class DatabaseManager:
                     risk_score REAL DEFAULT 0,
                     created_at TIMESTAMP NOT NULL,
                     status TEXT DEFAULT 'new',
-                    notes TEXT,
-                    INDEX idx_status (status),
-                    INDEX idx_profit (net_profit DESC),
-                    INDEX idx_created (created_at DESC)
+                    notes TEXT
                 )
             ''')
+            
+            # Create indexes separately
+            cursor.execute('''CREATE INDEX IF NOT EXISTS idx_opportunities_status ON opportunities(status)''')
+            cursor.execute('''CREATE INDEX IF NOT EXISTS idx_opportunities_profit ON opportunities(net_profit DESC)''')
+            cursor.execute('''CREATE INDEX IF NOT EXISTS idx_opportunities_created ON opportunities(created_at DESC)''')
             
             # Performance tracking table
             cursor.execute('''
@@ -94,11 +96,13 @@ class DatabaseManager:
                     price REAL NOT NULL,
                     shipping REAL DEFAULT 0,
                     stock INTEGER DEFAULT 0,
-                    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                    INDEX idx_product_platform (product_id, platform),
-                    INDEX idx_recorded_at (recorded_at DESC)
+                    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
             ''')
+            
+            # Create indexes for price history
+            cursor.execute('''CREATE INDEX IF NOT EXISTS idx_price_history_product_platform ON price_history(product_id, platform)''')
+            cursor.execute('''CREATE INDEX IF NOT EXISTS idx_price_history_recorded ON price_history(recorded_at DESC)''')
             
             # Search keywords tracking
             cursor.execute('''
@@ -486,3 +490,30 @@ class DatabaseManager:
         except Exception as e:
             logger.error(f"Error getting top keywords: {e}")
             return []
+    
+    def get_database_stats(self) -> Dict:
+        """Get database statistics"""
+        try:
+            conn = sqlite3.connect(self.db_path)
+            cursor = conn.cursor()
+            
+            stats = {}
+            
+            # Table counts
+            tables = ['opportunities', 'performance', 'blacklist', 'price_history', 'search_keywords', 'alerts']
+            
+            for table in tables:
+                try:
+                    cursor.execute(f"SELECT COUNT(*) FROM {table}")
+                    count = cursor.fetchone()[0]
+                    stats[f"{table}_count"] = count
+                except sqlite3.OperationalError:
+                    stats[f"{table}_count"] = 0
+            
+            conn.close()
+            
+            return stats
+            
+        except Exception as e:
+            logger.error(f"Error getting database stats: {e}")
+            return {}
