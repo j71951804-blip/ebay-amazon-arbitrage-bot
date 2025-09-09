@@ -4,7 +4,7 @@
     "cert_id": "SBX-147ddcaf71c2-4321-4ce4-8c75-e6eb",
     "dev_id": "8eb829b1-c1ee-4f69-98c5-f01b8ea6ea6f",
     "marketplace_id": "EBAY_GB",
-    "api_endpoint": "https://api.ebay.com"
+    "api_endpoint": "https://api.sandbox.ebay.com"
   },
   "amazon": {
     "access_key": "YOUR_AWS_ACCESS_KEY",
